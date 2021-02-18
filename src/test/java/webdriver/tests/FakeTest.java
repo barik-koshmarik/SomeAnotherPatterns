@@ -18,8 +18,6 @@ public class FakeTest {
 
     @Test
     public void successfulLogin() {
-
-
         Assert.assertEquals(MainPage.getUserName(), "Vasya");
     }
 }
