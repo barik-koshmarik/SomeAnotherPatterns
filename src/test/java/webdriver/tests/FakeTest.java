@@ -1,19 +1,26 @@
 package webdriver.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import webdriver.pages.FakePage;
 import webdriver.pages.MainPage;
-import webdriver.pages.SecondStepAuthPage;
 
 public class FakeTest {
+    FakePage fakePage;
+
+    @BeforeTest
+    public void init() {
+        fakePage = new FakePage();
+    }
 
     @Test
     public void logIn() {
-        FakePage.insertLogin("Vasya");
-        FakePage.pushSignInButton();
+        MainPage mainPage = fakePage.insertLogin("")
+                                    .insertPassword("")
+                                    .pushSignInButton();
 
-        Assert.assertTrue(FakePage.loginUnSuccessful());
+        Assert.assertEquals(mainPage.checkUser(), "");
     }
 
     @Test

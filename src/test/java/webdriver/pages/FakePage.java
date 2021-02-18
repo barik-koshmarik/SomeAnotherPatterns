@@ -9,19 +9,22 @@ public class FakePage extends BasePage {
     private final static WebElement PASSWORD_FIELD = initElement(By.name(" "));
     private final static WebElement SIGN_IN_BUTTON = initElement(By.name(" "));
 
-    public static void insertLogin(String userName) {
+    public FakePage insertLogin(String userName) {
         LOGIN_FIELD.sendKeys(userName);
+        return this;
     }
 
-    public static void insertPassword(String userPassword) {
+    public FakePage insertPassword(String userPassword) {
         PASSWORD_FIELD.sendKeys(userPassword);
+        return this;
     }
 
-    public static void pushSignInButton() {
+    public MainPage pushSignInButton() {
         SIGN_IN_BUTTON.click();
+        return new MainPage();
     }
 
-    public static void signIn() {
+    public void signIn() {
         insertLogin("");
         insertPassword("");
         pushSignInButton();

@@ -14,22 +14,22 @@ import webdriver.pages.SecondStepAuthPage;
 
 import java.util.concurrent.TimeUnit;
 
+import static webdriver.pages.LoginPage.*;
+
 public class FirstTest {
     WebDriver driver;
 
     @BeforeTest
     public void init() {
-        driver = Driver.getDriver();
-        driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
-        driver.get("https://idemo.bspb.ru/");
+
     }
 
     @Test
     public void firstTest() {
 
-        LoginPage.insertUserName("demo");
-        LoginPage.insertUserPassword("demo");
-        LoginPage.clickSignInButton();
+        insertUserName("demo");
+        insertUserPassword("demo");
+        clickSignInButton();
 
         Assert.assertTrue(SecondStepAuthPage.isOpened());
 
