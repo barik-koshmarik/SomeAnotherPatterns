@@ -8,7 +8,7 @@ import webdriver.pages.SecondStepAuthPage;
 
 public class FakeTest {
 
-    @Test
+    @Test(description = "Login test")
     public void logIn() {
         FakePage.insertLogin("Vasya");
         FakePage.pushSignInButton();
