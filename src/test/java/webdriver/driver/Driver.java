@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 
 public class Driver {
@@ -24,7 +24,14 @@ public class Driver {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         LOG.info("Driver initialization");
-        return new ChromeDriver(chromeOptions);
+        driver = new EventFiringWebDriver(new ChromeDriver(chromeOptions)).register(new WebDriverListener());
+        return driver;
     }
 
+    public static void closeDriver() {
+        if(driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
 }
